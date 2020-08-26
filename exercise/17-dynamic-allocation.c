@@ -4,19 +4,19 @@
 int main ()
 {
 
-    int i,j,k,n = 10, m = 1;
+    int i,j,k,a,n = 10, m = 1;
 
     int *num = (int*) malloc(10*sizeof(int));
-    int *num_aux = (int*) malloc(20*sizeof(int));
+    int *num_aux = NULL;
 
     printf("Insira uma sequencia de numeros, quando desejar parar, aperte zero.\n");
 
 
     while(m != 0)
     {
-        if (i < 10)
+        if (i < n)
         {
-            for(i=0; i<10; i++)
+            for(i=0; i<n; i++)
             {
                 if(m != 0)
                 {
@@ -32,26 +32,18 @@ int main ()
         if(i == n)
         {
             n = n+10;
+            num_aux = (int*) calloc(n,sizeof(int));
             for(j=0; j<i; j++)
             {
-                num_aux = (int*) malloc(n*sizeof(int));
                 num_aux[j] = num[j];
-                free(num);
-                num = (int*) malloc(n*sizeof(int));
-                num[j] = num_aux[j];
-                free(num_aux);
             }
-            for(i; i<n; i++)
+            free(num);
+            num = (int*) calloc(n,sizeof(int));
+            for(j=0; j<i; j++)
             {
-                if(m != 0)
-                {
-                    scanf("%d",&m);
-                    num[i] = m;
-                    setbuf(stdin,NULL);
-                }
-                else
-                    break;
+                num[j] = num_aux[j];
             }
+            free(num_aux);
 
         }
 
@@ -59,14 +51,9 @@ int main ()
     }
 
     printf("-----------num---------\n");
-    for(k=0; k<n; k++)
+    for(k=0; k<i; k++)
     {
         printf("%d\n",num[k]);
-    }
-    printf("-----------num_aux---------\n");
-    for(k=0; k<n; k++)
-    {
-        printf("%d\n",num_aux[k]);
     }
 
 
