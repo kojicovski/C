@@ -23,7 +23,7 @@ int main () {
     p[2].numero = p[0].numero - 1;
 
     for (int i = 0; i < 4; i++) {
-        printf("Idade de p%i: %i \n", p[i], p[i].idade);
+        printf("Idade de p%i: %i \n", i, p[i].idade);
     };
 
 system("PAUSE");
